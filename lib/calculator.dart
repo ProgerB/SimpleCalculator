@@ -18,29 +18,6 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
   double resultFontSize = 0.0;
   Color resultColor = Colors.black;
 
-  void _showDialog() {
-    // flutter defined function
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        // return object of type Dialog
-        return const AlertDialog(
-          title: Text("Alert Dialog title"),
-          content: Text("Alert Dialog body"),
-          // actions: <Widget>[
-          //   // usually buttons at the bottom of the dialog
-          //   FlatButton(
-          //     child: const Text("Close"),
-          //     onPressed: () {
-          //       Navigator.of(context).pop();
-          //     },
-          //   ),
-          // ],
-        );
-      },
-    );
-  }
-
   buttonPressed(String buttonText) {
     setState(() {
       var listElement = ['×', '÷', '-', '+', '.', '%'];
@@ -54,15 +31,10 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
           Expression exp = p.parse(expression);
           ContextModel cm = ContextModel();
           result = '${exp.evaluate(EvaluationType.REAL, cm)}';
-          // if (result == 'Infinity') {
-          //   // result = "0";
-          //   equation = 'not divisible by 0';
-          // }
+
         } catch (e) {
           result = '0';
-          // equation = '0';
         }
-        // result = result;
       }
 
       if (listElement.contains(buttonText)) {
